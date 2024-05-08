@@ -1,0 +1,138 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Продукты питания",
+      "description": "Продукты в натуральном или переработанном виде, употребляемые человеком в пищу"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Электроника",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Концелярские товары",
+      "description": "Изделия и принадлежности, используемые для переписки и оформления бумажной документации, учебы, творчества."
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "name": "Одежда и обувь",
+      "description": "Совокупность изделий, которые люди надевают на себя для прикрытия тела."
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Яблоко",
+      "description": "Сочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков.",
+      "photo": "product/photo/Яблоко_фото.webp",
+      "category": 1,
+      "price": 150,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Груша",
+      "description": "Это фрукт, растущий на грушевых деревьях, которые принадлежат к семейству Розоцветные и составляют род Pyrus.",
+      "photo": "product/photo/груша_фото.webp",
+      "category": 1,
+      "price": 200,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Apple iPhone 15",
+      "description": "Смартфон производства корпорации Apple, работающий на базе операционной системы iOS 17 и процессора Apple A16.",
+      "photo": "product/photo/Apple_iphone_15.jpg",
+      "category": 2,
+      "price": 90000,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Apple MacBook Pro 14",
+      "description": "MacBook Pro — линейка ноутбуков компании Apple, представленная в январе 2006 года. Серия Pro — более дорогая в семействе MacBook и рассчитана на профессиональных пользователей в отличие от младшей серии MacBook Air и выпускавшихся ранее MacBook (2006—2012) и MacBook (2015—2019). Производится с 14 - и 16-дюймовыми экранами. Все модели актуальной линейки используют варианты собственной системы на чипе Apple M3.",
+      "photo": "product/photo/Apple_MacBook_Pro_14.jpg",
+      "category": 2,
+      "price": 300000,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Ручка",
+      "description": "Письменная принадлежность, с помощью которой можно оставить чернильный след на поверхности (обычно на бумаге).",
+      "photo": "product/photo/Ручка.webp",
+      "category": 3,
+      "price": 20,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Степлер",
+      "description": "Это механическое устройство, которое соединяет страницы из бумаги или аналогичного материала путем протыкания листов тонкой металлической скобой и загибания концов.",
+      "photo": "product/photo/степлер.webp",
+      "category": 3,
+      "price": 100,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Замшевая куртка-бомбер",
+      "description": "Куртка-бомбер с каймой в резинку, изготовленная из гладкой замши и украшенная тисненым логотипом Versace на груди. Модель на подкладке с контрастным принтом La Coupe des Dieux.",
+      "photo": "product/photo/Куртка-бомбер.jpg",
+      "category": 4,
+      "price": 80000,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Nike Pegasus 40",
+      "description": "Кроссовки Nike Air Zoom Pegasus разработаны для комфортного бега и активных тренировок. Отличный вариант для детей, которые не сидят на месте!",
+      "photo": "product/photo/Кроссовки.jpg",
+      "category": 4,
+      "price": 12000,
+      "created_at": "2024-05-08",
+      "updated_at": "2024-05-08"
+    }
+  }
+]
