@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Model, DateField
+from django.db.models import DateField
 
 
 # Create your models here.
@@ -69,12 +69,6 @@ class Product(models.Model):
     updated_at = DateField(
         verbose_name="Дата последнего изменения",
         help_text="Укажите дату последнего изменения",
-    )
-    manufactured_at = DateField(
-        verbose_name="Дата производства продукта",
-        help_text="Укажите дату производства продукта",
-        null=True,
-        blank=True,
     )
 
     class Meta:
