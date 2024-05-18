@@ -9,7 +9,7 @@ from config.settings import BASE_DIR
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("catalog.urls", namespace="catalog")),
+    path("", include("catalog.urls", namespace="catalog"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 MEDIA_URL = "/media/"

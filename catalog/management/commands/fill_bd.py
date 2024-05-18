@@ -5,7 +5,7 @@ import os.path
 from django.core.management import BaseCommand
 from django.db import connection
 
-from catalog.models import Category, Product
+from catalog.models import Category, Product, Contacts
 from config.settings import BASE_DIR
 
 
@@ -20,13 +20,16 @@ class Command(BaseCommand):
 
             list_categories = []
             list_products = []
+            list_contacts = []
             for i in data:
                 if i["model"] == "catalog.product":
                     list_products.append(i)
-                else:
+                elif i["model"] == "catalog.category":
                     list_categories.append(i)
+                else:
+                    list_contacts.append(i)
 
-        return list_categories, list_products
+        return list_categories, list_products, list_contacts
 
     def handle(self, *args, **options):
         with connection.cursor() as cursor:
@@ -34,11 +37,13 @@ class Command(BaseCommand):
 
         Category.objects.all().delete()
         Product.objects.all().delete()
+        Contacts.objects.all().delete()
 
-        categories, products = Command.json_read()
+        categories, products, contacts = Command.json_read()
 
         product_for_create = []
         category_for_create = []
+        contact_for_create = []
 
         for category in categories:
             category_for_create.append(
@@ -64,3 +69,14 @@ class Command(BaseCommand):
             )
 
         Product.objects.bulk_create(product_for_create)
+
+        for contact in contacts:
+            contact_for_create.append(
+                Contacts(
+                    country=contact["fields"]["country"],
+                    INN=contact["fields"]["INN"],
+                    address=contact["fields"]["address"],
+                )
+            )
+
+        Contacts.objects.bulk_create(contact_for_create)

@@ -6,7 +6,7 @@ from django.db.models import DateField
 class Category(models.Model):
 
     def __str__(self):
-        return f"Категория: \n{self.name}\n" f"Описание: \n{self.description}"
+        return f"{self.name}"
 
     name = models.CharField(
         max_length=100,
@@ -29,11 +29,7 @@ class Category(models.Model):
 class Product(models.Model):
 
     def __str__(self):
-        return (
-            f"Продукт: \n{self.name}\n"
-            f"Цена: {self.price}\n"
-            f"Описание: \n{self.description}"
-        )
+        return f"{self.name}"
 
     name = models.CharField(
         max_length=100,
@@ -81,20 +77,20 @@ class Contacts(models.Model):
 
     def __str__(self):
         return (
-            f"Имя - {self.name}\n"
-            f"Телефон - {self.phone}\n"
+            f"Страна - {self.country}\n"
+            f"ИНН - {self.INN}\n"
             f"Адрес - {self.address}"
         )
 
-    name = models.CharField(max_length=100, verbose_name="Имя", help_text="Введите имя")
-    phone = models.CharField(
-        max_length=255,
-        verbose_name="Контактный телефон",
-        help_text="Введите контактный телефон",
+    country = models.CharField(max_length=100, verbose_name="Страна", help_text="Введите страну")
+    INN = models.CharField(
+        max_length=100,
+        verbose_name="ИНН",
+        help_text="Введите ИНН",
     )
     address = models.TextField(verbose_name="Адрес отделения", help_text="Введите адрес отделения")
 
     class Meta:
         verbose_name = "Контакт"
         verbose_name_plural = "Контакты"
-        ordering = ["name",]
+        ordering = ["country",]

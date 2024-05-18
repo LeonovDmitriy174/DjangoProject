@@ -18,5 +18,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Contacts)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "phone", "address")
-    search_fields = ("name", "address")
+    list_display = ("id", "country", "INN", "address")
+    search_fields = ("country", "address")
