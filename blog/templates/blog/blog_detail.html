@@ -1,0 +1,33 @@
+{% extends "blog/base_template.html" %}
+{% block content %}
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">MyBlog</h1>
+        <p class="lead">Блог о жизни, спорте, учебе и отдыхе</p>
+    </div>
+    {% load blog_tags %}
+    <div class="container">
+    <div class="col-12">
+        <div class="card md-2" style="max-width: 1350px;">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img class="card-img-top middle" src="{{ object.photo | media_filter }}"
+                         alt="{{ object.title }}">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ object.title }}</h4>
+                        <p class="card-text">{{ object.content }}</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <a href="{% url 'blog:post_update' object.pk %}"
+                               class="btn btn-outline-primary">Редактировать</a>
+                            <a href="{% url 'blog:post_delete' object.pk %}"
+                               class="btn btn-outline-danger text-end">Удалить</a>
+                        </div>
+                        <p class="link-dark text-end">{{ object.view_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</div>

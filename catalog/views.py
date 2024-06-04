@@ -1,32 +1,47 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView
 
 from catalog.models import Product, Contacts
 
 
-def home_page(request):
-    product_list = Product.objects.all()
-    context = {
-        'object_list': product_list,
-    }
-    return render(request, "catalog/home_page.html", context)
+class ProductListView(ListView):
+    model = Product
 
 
-def contact_info(request):
-    contact_list = Contacts.objects.all()
-    context = {
-        'object_list': contact_list
-    }
+class ContactsView(TemplateView):
+    template_name = "catalog/contact_info.html"
+    model = Contacts
 
-    name = request.POST.get("name")
-    phone = request.POST.get("phone")
-    message = request.POST.get("message")
-    print(name, phone, message)
-    return render(request, "catalog/contact_info.html", context)
+    def get(self, request, *args, **kwargs):
+        object_list = self.model.objects.all()
+        return render(request, self.template_name, {'object_list': object_list})
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            phone = request.POST.get('phone')
+            message = request.POST.get('message')
+            print(f'Message from {name} (Tel: {phone}): {message}')
+        return render(request, self.template_name)
 
 
-def product_page(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    context = {
-        'object': product
-    }
-    return render(request, "catalog/product_page.html", context)
+class ProductDetailView(DetailView):
+    model = Product
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ("name", "description", "photo", "category", "price")
+    success_url = reverse_lazy("catalog:home_page")
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = ("name", "description", "photo", "category", "price")
+    success_url = reverse_lazy("catalog:home_page")
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy("catalog:home_page")

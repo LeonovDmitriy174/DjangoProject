@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import DateField
+from django.utils import timezone
 
 
 # Create your models here.
@@ -60,11 +61,13 @@ class Product(models.Model):
     )
     price = models.IntegerField(verbose_name="Цена", help_text="Введите цену товара")
     created_at = DateField(
-        verbose_name="Дата создания записи", help_text="Укажите дату создания"
+        verbose_name="Дата создания записи", help_text="Укажите дату создания",
+        default=timezone.now,
     )
     updated_at = DateField(
         verbose_name="Дата последнего изменения",
         help_text="Укажите дату последнего изменения",
+        default=timezone.now,
     )
 
     class Meta:
@@ -76,11 +79,7 @@ class Product(models.Model):
 class Contacts(models.Model):
 
     def __str__(self):
-        return (
-            f"Страна - {self.country}\n"
-            f"ИНН - {self.INN}\n"
-            f"Адрес - {self.address}"
-        )
+        return self.country
 
     country = models.CharField(max_length=100, verbose_name="Страна", help_text="Введите страну")
     INN = models.CharField(
@@ -93,4 +92,4 @@ class Contacts(models.Model):
     class Meta:
         verbose_name = "Контакт"
         verbose_name_plural = "Контакты"
-        ordering = ["country",]
+        ordering = ["country", ]

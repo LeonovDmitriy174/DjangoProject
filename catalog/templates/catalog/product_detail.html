@@ -1,0 +1,33 @@
+{% extends "catalog/base_template.html" %}
+{% block content %}
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Skystore</h1>
+        <p class="lead">Skystore - №1 магазин электроники в мире</p>
+    </div>
+    {% load catalog_tags %}
+    <div class="container">
+    <div class="col-12">
+        <div class="card md-2" style="max-width: 1350px;">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img class="card-img-top middle" src="{{ object.photo | media_filter }}"
+                         alt="{{ object.name }}">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ object.name | title }}</h4>
+                        <p class="card-text">{{ object.description }}</p>
+                        <h5 class="text-center">{{ object.price }} руб.</h5>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <a href="{% url 'catalog:product_update' object.pk %}"
+                               class="btn btn-outline-primary">Редактировать</a>
+                            <a href="{% url 'catalog:product_delete' object.pk %}"
+                               class="btn btn-outline-danger text-end">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</div>

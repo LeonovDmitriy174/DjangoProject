@@ -1,6 +1,6 @@
-import datetime
 import json
 import os.path
+from django.utils import timezone
 
 from django.core.management import BaseCommand
 from django.db import connection
@@ -26,7 +26,7 @@ class Command(BaseCommand):
                     list_products.append(i)
                 elif i["model"] == "catalog.category":
                     list_categories.append(i)
-                else:
+                elif i["model"] == "catalog.contacts":
                     list_contacts.append(i)
 
         return list_categories, list_products, list_contacts
@@ -64,7 +64,7 @@ class Command(BaseCommand):
                     category=Category.objects.get(pk=product["fields"]["category"]),
                     price=product["fields"]["price"],
                     created_at=product["fields"]["created_at"],
-                    updated_at=datetime.datetime.now().date(),
+                    updated_at=timezone.now(),
                 )
             )
 

@@ -1,0 +1,39 @@
+{% extends "blog/base_template.html" %}
+{% block content %}
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">MyBlog</h1>
+        <p class="lead">Блог о жизни, спорте, учебе и отдыхе</p>
+    </div>
+    {% load blog_tags %}
+    <div class="container">
+    <div class="col-12 mb-5">
+        <a class="btn btn-outline-primary" href="{% url 'blog:post_create' %}">Добавить пост</a>
+    </div>
+    <div class="row text">
+        {% for object in object_list|is_published %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-title">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                </div>
+                <div class="verticalcenter">
+                    <img class="card-img-top middle" src="{{ object.photo | media_filter }}">
+                </div>
+                <style>
+                    .verticalcenter {
+                        display: table-cell;
+                        height: 380px;
+                        vertical-align: middle;
+                    }
+                </style>
+                <div class="card-body">
+                    <h6 class="card-text">{{ object.content | description_hundred }} </h6>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <a href="{% url 'blog:blog_post' object.pk %}" class="btn-outline-primary">Подробнее</a>
+                    </div>
+                    <p class="link-dark text-end">{{ object.view_count }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</div>

@@ -6,7 +6,10 @@
     </div>
     {% load catalog_tags %}
     <div class="container">
-    <div class="row text-center">
+    <div class="col-12 mb-5">
+        <a class="btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить продукт</a>
+    </div>
+    <div class="row text">
         {% for object in object_list %}
             <div class="card" style="width: 18rem;">
                 <div class="verticalcenter">
@@ -23,7 +26,9 @@
                     <h5 class="card-title">{{ object.name | title }}</h5>
                     <h6 class="card-text">{{ object.description | description_hundred }} </h6>
                     <p class="card-text">{{ object.price }} руб.</p>
-                    <a href="/product/{{ object.pk }}/" class="btn btn-primary">Купить</a>
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'catalog:product_page' object.pk %}" class="btn-outline-primary">Подробнее</a>
+                    </div>
                 </div>
             </div>
         {% endfor %}
