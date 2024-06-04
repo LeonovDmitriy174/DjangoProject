@@ -61,7 +61,8 @@ class Product(models.Model):
     )
     price = models.IntegerField(verbose_name="Цена", help_text="Введите цену товара")
     created_at = DateField(
-        verbose_name="Дата создания записи", help_text="Укажите дату создания",
+        verbose_name="Дата создания записи",
+        help_text="Укажите дату создания",
         default=timezone.now,
     )
     updated_at = DateField(
@@ -81,15 +82,21 @@ class Contacts(models.Model):
     def __str__(self):
         return self.country
 
-    country = models.CharField(max_length=100, verbose_name="Страна", help_text="Введите страну")
+    country = models.CharField(
+        max_length=100, verbose_name="Страна", help_text="Введите страну"
+    )
     INN = models.CharField(
         max_length=100,
         verbose_name="ИНН",
         help_text="Введите ИНН",
     )
-    address = models.TextField(verbose_name="Адрес отделения", help_text="Введите адрес отделения")
+    address = models.TextField(
+        verbose_name="Адрес отделения", help_text="Введите адрес отделения"
+    )
 
     class Meta:
         verbose_name = "Контакт"
         verbose_name_plural = "Контакты"
-        ordering = ["country", ]
+        ordering = [
+            "country",
+        ]

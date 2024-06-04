@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    TemplateView,
+    UpdateView,
+    DeleteView,
+)
 
 from catalog.models import Product, Contacts
 
@@ -15,14 +22,14 @@ class ContactsView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         object_list = self.model.objects.all()
-        return render(request, self.template_name, {'object_list': object_list})
+        return render(request, self.template_name, {"object_list": object_list})
 
     def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            name = request.POST.get('name')
-            phone = request.POST.get('phone')
-            message = request.POST.get('message')
-            print(f'Message from {name} (Tel: {phone}): {message}')
+        if request.method == "POST":
+            name = request.POST.get("name")
+            phone = request.POST.get("phone")
+            message = request.POST.get("message")
+            print(f"Message from {name} (Tel: {phone}): {message}")
         return render(request, self.template_name)
 
 
