@@ -4,13 +4,9 @@
     <div class="col-12">
         <form class="row" method="post" enctype="multipart/form-data">
             <div class="col-6">
-                <div class="card mb-4 box-shadow">
+                <div class="card">
                     <div class="card-header">
-                        {% if object %}
-                            <h4 class="card-title text-center">Редактирование продукта</h4>
-                        {% else %}
-                            <h4 class="card-title text-center">Создание продукта</h4>
-                        {% endif %}
+                        <h4 class="card-title text-center">Добавление категории</h4>
                     </div>
                     <div class="card-body">
                         {% csrf_token %}
@@ -21,9 +17,9 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="card mb-4 box-shadow">
+                <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title text-center">Версии</h4>
+                        <h4 class="card-title text-center">Товары в категории</h4>
                     </div>
                     <div class="card-body">
                         {{ formset.management_form }}

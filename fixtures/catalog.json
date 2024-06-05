@@ -33,7 +33,7 @@
       "category": 2,
       "price": 85899,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -46,7 +46,7 @@
       "category": 2,
       "price": 148499,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -59,7 +59,7 @@
       "category": 2,
       "price": 135899,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -72,7 +72,7 @@
       "category": 1,
       "price": 237999,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -85,7 +85,7 @@
       "category": 1,
       "price": 185999,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -98,7 +98,7 @@
       "category": 1,
       "price": 179999,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -111,7 +111,7 @@
       "category": 3,
       "price": 139499,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -124,7 +124,7 @@
       "category": 3,
       "price": 379999,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
@@ -137,12 +137,12 @@
       "category": 3,
       "price": 433999,
       "created_at": "2024-05-08",
-      "updated_at": "2024-05-19"
+      "updated_at": "2024-06-04"
     }
   },
   {
     "model": "catalog.contacts",
-    "pk": 5,
+    "pk": 9,
     "fields": {
       "country": "USA",
       "INN": "91-1144442",
@@ -151,11 +151,101 @@
   },
   {
     "model": "catalog.contacts",
-    "pk": 6,
+    "pk": 10,
     "fields": {
       "country": "Россия",
       "INN": "-",
       "address": "Тюмень"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "number_version": 15,
+      "name_version": "Apple iPhone 15",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 2,
+    "fields": {
+      "product": 5,
+      "number_version": 9,
+      "name_version": "Galaxy Tab S9",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 3,
+    "fields": {
+      "product": 5,
+      "number_version": 8,
+      "name_version": "Galaxy Tab S8",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 4,
+    "fields": {
+      "product": 5,
+      "number_version": 7,
+      "name_version": "Galaxy Tab S7",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 5,
+    "fields": {
+      "product": 1,
+      "number_version": 14,
+      "name_version": "Apple iPhone 14",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 6,
+    "fields": {
+      "product": 3,
+      "number_version": 15,
+      "name_version": "Apple iPhone 15 Pro",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 7,
+    "fields": {
+      "product": 3,
+      "number_version": 14,
+      "name_version": "Apple iPhone 14 Pro",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 8,
+    "fields": {
+      "product": 2,
+      "number_version": 15,
+      "name_version": "Apple iPhone 15 Pro Max",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 9,
+    "fields": {
+      "product": 2,
+      "number_version": 14,
+      "name_version": "Apple iPhone 14 Pro Max",
+      "is_active": true
     }
   }
 ]

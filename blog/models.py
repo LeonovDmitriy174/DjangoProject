@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models import DateField, BooleanField
 from django.utils import timezone
-from django.utils.text import slugify
 
 
 class Blog(models.Model):

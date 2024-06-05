@@ -3,13 +3,12 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
-    TemplateView,
     UpdateView,
-    DeleteView,
-)
+    DeleteView,)
 from pytils.translit import slugify
 
 from blog.models import Blog
+from blog.forms import BlogForm
 
 
 class BlogListView(ListView):
@@ -28,7 +27,7 @@ class BlogDetailView(DetailView):
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ("title", "content", "photo", "created_at", "is_published", "view_count")
+    form_class = BlogForm
     success_url = reverse_lazy("blog:blog_page")
 
     def form_valid(self, form):
@@ -42,7 +41,7 @@ class BlogCreateView(CreateView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ("title", "content", "photo", "is_published")
+    form_class = BlogForm
     success_url = reverse_lazy("blog:blog_page")
 
     def get_success_url(self):
