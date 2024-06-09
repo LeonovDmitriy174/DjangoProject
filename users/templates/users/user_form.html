@@ -1,0 +1,24 @@
+{% extends "catalog/base_template.html" %}
+{% block content %}
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Skystore</h1>
+        <p class="lead">Skystore - №1 магазин электроники в мире</p>
+    </div>
+    <div class="container">
+    <div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</div>
+</div>
