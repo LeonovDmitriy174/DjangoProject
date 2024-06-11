@@ -1,5 +1,11 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+PASSWORD_POSTGRESQL = os.getenv("PASSWORD_POSTGRESQL")
+EMAIL_HOST_USER_ = os.getenv("EMAIL_HOST_USER_")
+EMAIL_HOST_PASSWORD_ = os.getenv("EMAIL_HOST_PASSWORD_")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,8 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-from PASSWORD import PASSWORD_POSTGRESQL
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -102,8 +106,6 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "/"
 
 LOGOUT_REDIRECT_URL = "users:logout"
-
-from PASSWORD import EMAIL_HOST_PASSWORD_, EMAIL_HOST_USER_
 
 EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
