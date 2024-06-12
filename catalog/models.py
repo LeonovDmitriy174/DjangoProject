@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import DateField
+from django.db.models import DateField, BooleanField
 from django.utils import timezone
 
 from users.models import User
@@ -79,11 +79,19 @@ class Product(models.Model):
         help_text="Укажите дату последнего изменения",
         default=timezone.now,
     )
+    is_published = BooleanField(
+        verbose_name="Опубликовано", help_text="Признак публикации", default=False
+    )
 
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["-created_at", "-updated_at", "name", "price", "category"]
+        permissions = [
+            ("change_published", "Может менять признак публикации продукта"),
+            ("change_description", "Может менять описание продукта"),
+            ("change_category", "Может менять категорию продукта"),
+        ]
 
 
 class Contacts(models.Model):

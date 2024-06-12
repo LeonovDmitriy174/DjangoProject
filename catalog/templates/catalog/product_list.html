@@ -7,10 +7,14 @@
     {% load catalog_tags %}
     <div class="container">
     <div class=" text mb-4 d-grid gap-3 d-md-flex justify-content-md">
-        <a href="{% url 'catalog:product_create' %}"
-           class="btn btn-outline-primary">Добавление продукта</a>
-        <a href="{% url 'catalog:category_create' %}"
-           class="btn btn-outline-primary text-end">Добавление категории</a>
+        {% if perms.catalog.add_product %}
+            <a href="{% url 'catalog:product_create' %}"
+               class="btn btn-outline-primary">Добавление продукта</a>
+        {% endif %}
+        {% if perms.catalog.add_category %}
+            <a href="{% url 'catalog:category_create' %}"
+               class="btn btn-outline-primary text-end">Добавление категории</a>
+        {% endif %}
     </div>
     <div class="row text">
         {% for object in object_list %}
@@ -32,7 +36,17 @@
                     <p>Активная версия: {{ object.active_version }}</p>
                     <p>Номер версии: {{ object.active_version_number }}</p>
                     <div class="d-grid gap-2">
-                        <a href="{% url 'catalog:product_page' object.pk %}" class="btn-outline-primary">Подробнее</a>
+                        <a href="{% url 'catalog:product_page' object.pk %}"
+                           class="btn-outline-primary">Подробнее</a>
+                        {% if perms.catalog.change_published %}
+                            {% if object.is_published %}
+                                <a href="{% url 'catalog:product_update' object.pk %}"
+                                   class="btn btn-outline-warning">Снять с публикации</a>
+                            {% else %}
+                                <a href="{% url 'catalog:product_update' object.pk %}"
+                                   class="btn btn-outline-warning">Опубликовать</a>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

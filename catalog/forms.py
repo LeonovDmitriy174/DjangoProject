@@ -65,6 +65,32 @@ class ProductForm(StileFormMixin, forms.ModelForm):
         )
 
 
+class ProductModeratorForm(StileFormMixin, forms.ModelForm):
+
+    def clean_description(self):
+        description = self.cleaned_data.get("description")
+        exceptions = [
+            "казино",
+            "криптовалюта",
+            "крипта",
+            "биржа",
+            "дешево",
+            "бесплатно",
+            "обман",
+            "полиция",
+            "радар",
+        ]
+
+        for word in description.split(" "):
+            if word.lower() in exceptions:
+                raise forms.ValidationError(f"Нельзя использовать слово {word}")
+        return description
+
+    class Meta:
+        model = Product
+        fields = "description", "category", "is_published"
+
+
 class CategoryForm(StileFormMixin, forms.ModelForm):
     class Meta:
         model = Category

@@ -19,10 +19,14 @@
                         <p class="card-text">{{ object.description }}</p>
                         <h5 class="text-center">{{ object.price }} руб.</h5>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            {% if request.user == object.creator or request.user|has_group:"moderator" or request.user.is_superuser %}
                             <a href="{% url 'catalog:product_update' object.pk %}"
                                class="btn btn-outline-primary">Редактировать</a>
+                            {% endif %}
+                            {% if perms.catalog.delete_product %}
                             <a href="{% url 'catalog:product_delete' object.pk %}"
                                class="btn btn-outline-danger text-end">Удалить</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
