@@ -2,8 +2,6 @@ import random
 import secrets
 import string
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
@@ -15,7 +13,7 @@ from users.models import User
 from django.core.mail import send_mail
 
 
-class UserCreateView(LoginRequiredMixin, CreateView):
+class UserCreateView(CreateView):
     model = User
     form_class = UserRegisterForm
     success_url = reverse_lazy("users:login")
