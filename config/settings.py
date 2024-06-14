@@ -9,7 +9,7 @@ EMAIL_HOST_PASSWORD_ = os.getenv("EMAIL_HOST_PASSWORD_")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-r+#v-f%*m1f9-&@n^g8$&fg9w-9xdl*4q2u2q%nxbhccrx=8b%"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True
 
@@ -61,10 +61,10 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "django_project",
-        "USER": "postgres",
+        "NAME": os.getenv("NAME"),
+        "USER": os.getenv("USER"),
         "PASSWORD": PASSWORD_POSTGRESQL,
-        "HOST": "localhost",
+        "HOST": os.getenv("HOST"),
     }
 }
 
@@ -116,3 +116,12 @@ EMAIL_USE_SSL = True
 
 SERVER_EMAIL = EMAIL_HOST_USER
 FAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CACHE_ENABLED = True
+if CACHE_ENABLED:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv("CACHES_LOCATION"),
+        }
+    }

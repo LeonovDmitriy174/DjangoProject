@@ -14,6 +14,7 @@ from django.views.generic import (
 
 from catalog.models import Product, Contacts, Category, Version
 from catalog.forms import ProductForm, CategoryForm, VersionForm, ProductModeratorForm
+from catalog.services import get_product_from_cache
 
 
 class ContactsView(TemplateView):
@@ -50,6 +51,9 @@ class ProductListView(ListView):
                 product.active_version_number = "-"
         context_data["object_list"] = products
         return context_data
+
+    def get_queryset(self):
+        return get_product_from_cache()
 
 
 class ProductDetailView(DetailView):
@@ -201,3 +205,14 @@ class CategoryUpdateView(LoginRequiredMixin, UpdateView):
             formset.instance = self.object
             formset.save()
         return super().form_valid(form)
+
+
+class CategoryDetailView(DetailView):
+    model = Category
+    form_class = CategoryForm
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        products = Product.objects.filter(category=self.get_object())
+        context_data["object_list"] = products
+        return context_data
