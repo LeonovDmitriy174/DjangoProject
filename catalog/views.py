@@ -83,7 +83,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save()
         if form.is_valid and formset.is_valid():
             new_object = form.save(commit=False)
-            new_object.author = self.request.user
+            new_object.creator = self.request.user
             new_object.save()
             formset.instance = self.object
             formset.save()
